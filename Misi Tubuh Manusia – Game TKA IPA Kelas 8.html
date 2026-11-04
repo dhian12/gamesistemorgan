@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Misi Tubuh Manusia – Game TKA IPA Kelas 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eaf2f6;--card:#fff;--ink:#12263a;--mute:#566b7d;--line:#cfdce5;--arteri:#d6342f;--vena:#2a62b8;--emas:#e8a317;--ok:#1e8f5a;--bad:#c42b2b;--okbg:#e2f5ea;--badbg:#fbe5e5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1b27;--card:#17283a;--ink:#e8f0f6;--mute:#9db1c2;--line:#2c4257;--okbg:#14372a;--badbg:#3d1c1f}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1b27;--card:#17283a;--ink:#e8f0f6;--mute:#9db1c2;--line:#2c4257;--okbg:#14372a;--badbg:#3d1c1f}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-size:17px;line-height:1.5;min-height:100vh}
+h1,h2,h3{font-family:'Baloo 2','Nunito',system-ui,sans-serif;margin:0;line-height:1.15}
+main{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+.vessel{height:10px;border-radius:6px;background:linear-gradient(90deg,var(--arteri) 0 50%,var(--vena) 50% 100%);margin-bottom:18px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:24px}
+.hero h1{font-size:clamp(2.2rem,8vw,3.4rem);font-weight:800;letter-spacing:-.5px}
+.hero p{color:var(--mute);margin:10px 0 20px}
+input{width:100%;font:inherit;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);margin-bottom:14px}
+input:focus,button:focus-visible{outline:3px solid var(--emas);outline-offset:2px}
+.btn{font:700 1.1rem 'Baloo 2',sans-serif;background:var(--ink);color:var(--bg);border:0;border-radius:14px;padding:12px 26px;cursor:pointer;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn.sec{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.lvls{display:grid;gap:12px;margin-top:18px}
+.lv{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:16px 16px 16px 4px;padding:14px;background:var(--card)}
+.lv .ic{font-size:2rem;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none}
+.lv small{color:var(--mute)}
+.lv.lock{opacity:.5}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;font-weight:800}
+.chip{padding:4px 12px;border-radius:999px;background:var(--card);border:2px solid var(--line);font-size:.95rem}
+.bar{height:12px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;transition:width .4s}
+.q{font-size:1.2rem;font-weight:800;margin-bottom:16px}
+.opt{display:block;width:100%;text-align:left;font:600 1rem 'Nunito',sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:13px 16px;margin-bottom:10px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.exp{border-left:6px solid var(--emas);padding:10px 14px;margin:14px 0;background:var(--bg);border-radius:0 12px 12px 0}
+.big{font:800 4rem 'Baloo 2',sans-serif;line-height:1}
+.center{text-align:center}
+.cert{background:#fffdf5;color:#2b2210;border:10px double #c9962b;border-radius:6px;padding:28px 20px;text-align:center;position:relative}
+.cert h2{font-size:clamp(1.8rem,7vw,2.6rem);color:#8a5d00;letter-spacing:1px}
+.cert .nm{font:800 clamp(1.8rem,8vw,2.8rem) 'Baloo 2',sans-serif;border-bottom:2px solid #c9962b;display:inline-block;padding:0 18px;margin:8px 0;color:#12263a;word-break:break-word}
+.cert p{margin:6px 0}
+.seal{width:84px;height:84px;border-radius:50%;margin:14px auto 0;background:radial-gradient(circle,#f6cf5d,#c9962b);display:grid;place-items:center;font-size:2.4rem;box-shadow:0 0 0 5px #fffdf5,0 0 0 8px #c9962b}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+@media print{body *{visibility:hidden}.cert,.cert *{visibility:visible}.cert{position:absolute;left:0;top:0;width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="vessel"></div>
+<div id="app"></div>
+</main>
+<script>
+const C=["var(--arteri)","var(--vena)","var(--emas)"];
+const L=[
+{n:"Sistem Peredaran Darah",ic:"🫀",q:[
+{q:"Pembuluh darah yang membawa darah kaya oksigen dari jantung ke seluruh tubuh (selain paru-paru) disebut ....",o:["Arteri","Vena","Kapiler","Vena pulmonalis"],a:0,e:"Arteri membawa darah dari jantung dengan tekanan tinggi, sehingga dindingnya tebal dan elastis."},
+{q:"Darah miskin oksigen dari seluruh tubuh pertama kali masuk ke jantung melalui bagian ....",o:["Serambi kanan","Serambi kiri","Bilik kanan","Bilik kiri"],a:0,e:"Vena cava mengalirkan darah dari tubuh ke serambi kanan, lalu ke bilik kanan dan ke paru-paru."},
+{q:"Luka Dito sulit berhenti berdarah. Komponen darah yang kemungkinan jumlahnya kurang adalah ....",o:["Trombosit","Eritrosit","Leukosit","Plasma darah"],a:0,e:"Trombosit (keping darah) berperan dalam pembekuan darah dengan bantuan fibrin."},
+{q:"Rani bergolongan darah A. Ia dapat menerima transfusi darah dari golongan ....",o:["A dan O","B dan AB","AB saja","B dan O"],a:0,e:"Golongan A memiliki aglutinogen A, sehingga tidak boleh menerima darah yang mengandung aglutinogen B."},
+{q:"Dinding bilik kiri jantung lebih tebal daripada bilik kanan karena bilik kiri ....",o:["Memompa darah ke seluruh tubuh dengan tekanan besar","Menerima darah dari paru-paru","Menampung darah dari vena cava","Memompa darah hanya ke paru-paru"],a:0,e:"Sirkulasi besar membutuhkan tekanan lebih tinggi, sehingga otot bilik kiri lebih tebal."}]},
+{n:"Sistem Pernapasan",ic:"🫁",q:[
+{q:"Urutan jalur udara saat menghirup napas yang benar adalah ....",o:["Hidung – faring – laring – trakea – bronkus – alveolus","Hidung – laring – faring – bronkus – trakea – alveolus","Hidung – trakea – faring – laring – bronkus – alveolus","Hidung – faring – trakea – laring – alveolus – bronkus"],a:0,e:"Udara dari hidung melewati faring, laring, trakea, bronkus, bronkiolus, lalu tiba di alveolus."},
+{q:"Pada saat inspirasi (menarik napas) yang terjadi pada tubuh adalah ....",o:["Diafragma mendatar, rongga dada membesar, tekanan udara dalam paru-paru turun","Diafragma melengkung, rongga dada mengecil, tekanan naik","Diafragma mendatar, rongga dada mengecil, tekanan naik","Diafragma melengkung, rongga dada membesar, tekanan turun"],a:0,e:"Kontraksi diafragma dan otot antartulang rusuk memperbesar rongga dada sehingga udara masuk."},
+{q:"Pertukaran gas oksigen dan karbon dioksida di dalam paru-paru terjadi di ....",o:["Alveolus melalui difusi","Bronkus melalui osmosis","Trakea melalui difusi","Bronkiolus melalui filtrasi"],a:0,e:"Dinding alveolus sangat tipis dan dikelilingi kapiler darah sehingga gas mudah berdifusi."},
+{q:"Saat kita menelan, makanan tidak masuk ke trakea karena ....",o:["Epiglotis menutup pangkal laring","Rambut getar menahan makanan","Diafragma menutup trakea","Alveolus menyaring makanan"],a:0,e:"Epiglotis adalah katup tulang rawan yang menutup jalan napas saat menelan."},
+{q:"Ayu mengalami sesak napas dan bunyi mengi saat terkena debu karena saluran bronkusnya menyempit akibat alergi. Penyakit yang dialami Ayu adalah ....",o:["Asma","Tuberkulosis (TBC)","Emfisema","Bronkitis akibat bakteri"],a:0,e:"Asma disebabkan penyempitan saluran napas yang dipicu alergen seperti debu atau udara dingin."}]},
+{n:"Sistem Ekskresi",ic:"🧪",q:[
+{q:"Organ yang berfungsi menyaring darah dan mengeluarkan urea, garam, serta kelebihan air dalam bentuk urine adalah ....",o:["Ginjal","Hati","Kulit","Paru-paru"],a:0,e:"Ginjal menyaring darah melalui jutaan nefron."},
+{q:"Proses penyaringan darah yang menghasilkan urine primer terjadi di ....",o:["Badan Malpighi (glomerulus dan kapsul Bowman)","Tubulus kontortus distal","Lengkung Henle","Tubulus pengumpul"],a:0,e:"Filtrasi di glomerulus menghasilkan filtrat glomerulus (urine primer)."},
+{q:"Pada pemeriksaan, urine Budi mengandung glukosa. Kemungkinan Budi menderita ....",o:["Diabetes melitus","Nefritis","Batu ginjal","Anemia"],a:0,e:"Pada diabetes melitus kadar gula darah tinggi, sehingga glukosa tidak seluruhnya direabsorpsi dan ikut keluar bersama urine."},
+{q:"Mengapa pada cuaca dingin seseorang lebih sering buang air kecil dibandingkan cuaca panas?",o:["Produksi keringat sedikit sehingga ginjal mengeluarkan lebih banyak air","Ginjal berhenti bekerja saat panas","Hati mengeluarkan lebih banyak urea","Paru-paru mengeluarkan lebih sedikit uap air"],a:0,e:"Saat dingin, kelenjar keringat kurang aktif sehingga kelebihan air dibuang melalui ginjal."},
+{q:"Organ yang mengubah amonia hasil pemecahan protein menjadi urea adalah ....",o:["Hati","Ginjal","Pankreas","Kantong kemih"],a:0,e:"Hati mengubah amonia yang beracun menjadi urea, lalu urea dibawa darah ke ginjal untuk dikeluarkan."}]}
+];
+const app=document.getElementById("app");
+let S={name:"",lv:0,qi:0,ok:0,best:[null,null,null],items:[],done:false};
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const total=()=>S.best.reduce((a,b)=>a+(b||0),0);
+
+function home(){
+ const unlocked=i=>i===0||(S.best[i-1]!==null&&S.best[i-1]>=3);
+ const allDone=S.best.every(b=>b!==null&&b>=3);
+ app.innerHTML=`<div class="card hero">
+  <h1>Misi Tubuh Manusia</h1>
+  <p>Jawab soal TKA IPA kelas 8 tentang peredaran darah, pernapasan, dan ekskresi. Raih minimal 3 jawaban benar di setiap level untuk membuka level berikutnya dan mendapatkan sertifikat.</p>
+  ${S.name?`<p><b>Halo, ${esc(S.name)}!</b> Skor terbaikmu: ${total()} jawaban benar.</p>`:`<label for="nm"><b>Nama lengkap untuk sertifikat</b></label><input id="nm" maxlength="40" placeholder="Tulis namamu" autocomplete="name">`}
+  <div class="lvls">${L.map((l,i)=>`<div class="lv ${unlocked(i)?'':'lock'}"><div class="ic" style="background:${C[i]}">${l.ic}</div><div style="flex:1"><h3>Level ${i+1}: ${l.n}</h3><small>5 soal${S.best[i]!==null?` · terbaik ${S.best[i]}/5`:''}</small></div><button class="btn" ${unlocked(i)?'':'disabled'} onclick="start(${i})">${S.best[i]!==null?'Ulangi':'Main'}</button></div>`).join("")}</div>
+  ${allDone?`<div class="row"><button class="btn" onclick="cert()">Lihat sertifikat</button></div>`:""}
+ </div>`;
+}
+function start(i){
+ if(!S.name){const v=document.getElementById("nm").value.trim();if(!v){const n=document.getElementById("nm");n.focus();n.placeholder="Nama wajib diisi dulu";return}S.name=v}
+ S.lv=i;S.qi=0;S.ok=0;
+ S.items=sh(L[i].q).map(x=>{const opts=sh(x.o.map((t,k)=>({t,r:k===x.a})));return{q:x.q,e:x.e,opts}});
+ ask();
+}
+function ask(){
+ const l=L[S.lv],it=S.items[S.qi];
+ app.innerHTML=`<div class="top"><span class="chip">Level ${S.lv+1} · ${l.n}</span><span class="chip">Benar: ${S.ok}</span></div>
+ <div class="bar"><i style="width:${S.qi/5*100}%;background:${C[S.lv]}"></i></div>
+ <div class="card"><p style="color:var(--mute);margin:0 0 6px">Soal ${S.qi+1} dari 5</p><div class="q">${it.q}</div>
+ <div id="opts">${it.opts.map((o,k)=>`<button class="opt" onclick="pick(${k})">${String.fromCharCode(65+k)}. ${o.t}</button>`).join("")}</div><div id="fb"></div></div>`;
+}
+function pick(k){
+ const it=S.items[S.qi],good=it.opts[k].r;
+ if(good)S.ok++;
+ document.querySelectorAll(".opt").forEach((b,i)=>{b.disabled=true;if(it.opts[i].r)b.classList.add("ok");else if(i===k)b.classList.add("bad")});
+ const last=S.qi===4;
+ document.getElementById("fb").innerHTML=`<div class="exp"><b>${good?"Benar!":"Belum tepat."}</b> ${it.e}</div><button class="btn" onclick="next()">${last?"Lihat hasil":"Soal berikutnya"}</button>`;
+ document.querySelector(".chip:last-child").textContent="Benar: "+S.ok;
+}
+function next(){S.qi++;S.qi>=5?result():ask()}
+function result(){
+ const pass=S.ok>=3;
+ if(S.best[S.lv]===null||S.ok>S.best[S.lv])S.best[S.lv]=S.ok;
+ const fin=S.lv===2&&S.best.every(b=>b!==null&&b>=3);
+ app.innerHTML=`<div class="card center"><p style="margin:0">Level ${S.lv+1} selesai</p><div class="big" style="color:${C[S.lv]}">${S.ok}/5</div>
+ <h2 style="margin:10px 0">${S.ok===5?"Sempurna! 🏆":pass?"Level lulus! 🎉":"Coba lagi ya 💪"}</h2>
+ <p>${pass?"Kamu berhasil membuka tahap berikutnya.":"Butuh minimal 3 jawaban benar untuk lulus. Baca penjelasan lalu ulangi."}</p>
+ <div class="row">${!pass?`<button class="btn" onclick="start(${S.lv})">Ulangi level</button>`:""}
+ ${pass&&S.lv<2?`<button class="btn" onclick="start(${S.lv+1})">Lanjut Level ${S.lv+2}</button>`:""}
+ ${fin?`<button class="btn" onclick="cert()">Ambil sertifikat</button>`:""}
+ <button class="btn sec" onclick="home()">Menu level</button></div></div>`;
+}
+function cert(){
+ const t=total(),pr=t===15?"Juara Umum (Emas)":t>=13?"Sangat Baik (Perak)":"Baik (Perunggu)";
+ const d=new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
+ app.innerHTML=`<div class="cert"><p style="letter-spacing:3px;margin:0">SERTIFIKAT PENGHARGAAN</p><h2>Misi Tubuh Manusia</h2>
+ <p>Diberikan kepada</p><div class="nm">${esc(S.name)}</div>
+ <p>atas keberhasilan menuntaskan 3 level soal TKA IPA Kelas 8<br>Sistem Peredaran Darah, Sistem Pernapasan, dan Sistem Ekskresi</p>
+ <p><b>Skor: ${t} dari 15 soal benar</b><br>Predikat: <b>${pr}</b></p><p>${d}</p><div class="seal">🏅</div></div>
+ <div class="row"><button class="btn" onclick="try{window.print()}catch(e){}">Cetak sertifikat</button><button class="btn sec" onclick="home()">Kembali ke menu</button></div>
+ <p class="center" style="color:var(--mute);font-size:.9rem">Jika tombol cetak tidak berfungsi, ambil tangkapan layar sertifikat ini.</p>`;
+ window.scrollTo(0,0);
+}
+home();
+</script>
+</body>
+</html>
